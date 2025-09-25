@@ -59,26 +59,23 @@ const menuList = reactive([
 				name: '게시판',
 				icon: '📝',
 				isOpen: false,
-				children: [{ name: '항목 관리', to: '', type: 'link' }]
+				children: [
+					{ name: '게시판 관리', to: '', type: 'link' },
+					{ name: '게시글 현황', to: '', type: 'link' }
+				]
 			},
 			{
 				name: '근태',
 				icon: '⏰',
 				isOpen: false,
 				children: [
-					{ name: '근태 기본 설정', to: '', type: 'link' },
+					{ name: '현황', type: 'divider' },
+					{ name: '근로 현황', to: '', type: 'link' },
+					{ name: '부재 현황 (휴가 및 경조)', to: '', type: 'link' },
 
-					{ name: '근태 현황', type: 'divider' },
-					{ name: '출퇴근 현황', to: '', type: 'link' },
-					{ name: '근로 시간 현황', to: '', type: 'link' },
-
-					{ name: '근무(출퇴근)', type: 'divider' },
+					{ name: '설정', type: 'divider' },
 					{ name: '근무 방식 관리', to: '', type: 'link' },
-
-					{ name: '부재(연차/휴가)', type: 'divider' },
-					{ name: '부재 방식 관리', to: '', type: 'link' },
-					{ name: '특별 휴가 관리', to: '', type: 'link' },
-					{ name: '경조 기준 관리', to: '', type: 'link' }
+					{ name: '연차 및 휴일 관리', to: '', type: 'link' }
 				]
 			},
 			{
@@ -87,8 +84,8 @@ const menuList = reactive([
 				isOpen: false,
 				children: [
 					{ name: '결재 문서 관리', to: '', type: 'link' },
-					{ name: '서식 및 카테고리 관리', to: '', type: 'link' },
-					{ name: '유효하지 않은 결재관리', to: '', type: 'link' }
+					{ name: '서식 관리', to: '', type: 'link' },
+					{ name: '문서 번호 관리', to: '', type: 'link' }
 				]
 			}
 		]
@@ -189,7 +186,7 @@ const toggleMenu = (groupIndex, itemIndex) => {
 
 .depth-menu {
 	list-style: none;
-	padding-left: 2.125rem;
+	padding-left: 1.625rem;
 	padding-right: 1rem;
 	display: none;
 

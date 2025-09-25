@@ -43,6 +43,17 @@ Description: Reset css & Variables
 	--font-size-4xl: 2.25rem; // 36px
 	--font-size-5xl: 3rem; // 48px
 
+	// font-weight
+	--font-weight-thin: 100;
+	--font-weight-extra-light: 200;
+	--font-weight-light: 300;
+	--font-weight-normal: 400;
+	--font-weight-medium: 500;
+	--font-weight-semi-bold: 600;
+	--font-weight-bold: 700;
+	--font-weight-extra-bold: 800;
+	--font-weight-black: 900;
+
 	// border-radius
 	--border-radius-sm: 0.125rem;
 	--border-radius-md: 0.25rem;
@@ -87,7 +98,7 @@ Description: Reset css & Variables
 
 	// length
 	--header-height: 4rem;
-	--navbar-width: 12.5rem;
+	--navbar-width: 15rem;
 
 	// loading
 	--loading-top: 300px;
@@ -101,7 +112,7 @@ body {
 }
 
 html {
-	font-size: 16px;
+	font-size: var(--font-size-md); // 16px
 }
 
 body {
@@ -216,26 +227,17 @@ hr {
 /* 반응형 */
 @media all and (max-width: 768px) {
 	html {
-		font-size: 14px;
+		font-size: var(--font-size-sm); // 14px
 	}
 }
 
-@media (max-width: 1400px) {
-}
-
-@media (max-width: 1200px) {
+@media (max-width: 1190px) {
 }
 
 @media (max-width: 992px) {
 }
 
 @media (max-width: 768px) {
-	body {
-		&.open {
-			overflow: hidden;
-			position: fixed;
-		}
-	}
 }
 
 @media (max-width: 576px) {
