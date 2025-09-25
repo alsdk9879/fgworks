@@ -1,0 +1,242 @@
+/*
+Description: Reset css & Variables
+*/
+
+// import fonts
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap'); // Noto Sans
+
+* {
+	padding: 0;
+	margin: 0;
+	font: inherit;
+	color: inherit;
+}
+
+*,
+:after,
+:before {
+	box-sizing: border-box;
+}
+
+:root {
+	-webkit-tap-highlight-color: transparent;
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+	cursor: default;
+	overflow-wrap: break-word;
+	-moz-tab-size: 4;
+	tab-size: 4;
+	touch-action: pan-y; // 수직 방향의 드래그 동작만 허용하고, 확대/축소는 비활성화
+
+	/* variables */
+	// font
+	--font-primary: 'Noto Sans', 'sans-serif';
+
+	// font-size
+	--font-size-xs: 0.75rem; // 12px
+	--font-size-sm: 0.875rem; // 14px
+	--font-size-md: 1rem; // 16px
+	--font-size-lg: 1.125rem; // 18px
+	--font-size-xl: 1.25rem; // 20px
+	--font-size-2xl: 1.5rem; // 24px
+	--font-size-3xl: 1.875rem; // 32px
+	--font-size-4xl: 2.25rem; // 36px
+	--font-size-5xl: 3rem; // 48px
+
+	// border-radius
+	--border-radius-sm: 0.125rem;
+	--border-radius-md: 0.25rem;
+	--border-radius-lg: 0.5rem;
+
+	// icon
+	--icon-size-sm: 1rem; // 16px
+	--icon-size-md: 1.5rem; // 24px
+	--icon-size-lg: 2rem; // 32px
+
+	//color
+	--primary-color-25: #f7f9ff;
+	--primary-color-50: #eff4ff;
+	--primary-color-100: #e9f0ff; // light base color
+	--primary-color-200: #bed0f9;
+	--primary-color-300: #9db5e9;
+	--primary-color-400: #487ff2; // base color
+	--primary-color-400-dark: #2761da;
+
+	--secondary-color-100: #eff6ff;
+	--secondary-color-400: #dbeafe; // base color
+
+	--gray-color-50: #fafafa;
+	--gray-color-100: #f4f4f5;
+	--gray-color-200: #e4e4e7;
+	--gray-color-300: #d4d4d8;
+	--gray-color-400: #a1a1aa;
+	--gray-color-500: #71717a;
+	--gray-color-600: #52525b;
+	--gray-color-700: #3f3f46;
+	--gray-color-800: #27272a;
+	--gray-color-900: #18181b; //base color, text color
+
+	--gray2-color-100: #ecf1f6;
+	--gray2-color-400: #94a3b8; // state color
+
+	--warning-color-50: #fef2f2;
+	--warning-color-200: #ffd2d2;
+	--warning-color-400: #f87171;
+	--warning-color-500: #ef4444; //base color
+	--warning-color-600: #dc2626;
+
+	// length
+	--header-height: 4rem;
+	--navbar-width: 12.5rem;
+
+	// loading
+	--loading-top: 300px;
+}
+
+html,
+body {
+	width: 100%;
+	max-width: 100%;
+	height: 100%;
+}
+
+html {
+	font-size: 16px;
+}
+
+body {
+	line-height: 1;
+	letter-spacing: -0.02em;
+	font-family: var(--font-primary);
+	font-weight: 400;
+	color: var(--gray-color-900);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-overflow-scrolling: touch;
+
+	&.modal-open {
+		overflow: hidden;
+		position: fixed;
+	}
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+input,
+button,
+textarea,
+select,
+a {
+	font-family: inherit;
+	color: inherit;
+	background-color: inherit;
+	outline: none;
+	-webkit-tap-highlight-color: transparent;
+}
+
+dl,
+li,
+menu,
+ol,
+ul {
+	list-style: none;
+}
+
+a,
+button,
+a:hover,
+button:hover,
+a:active,
+button:active,
+a:focus,
+button:focus {
+	cursor: pointer;
+	text-decoration: none;
+	transition: all 0.1s ease-in-out;
+	border: none;
+}
+
+a:active {
+	color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	margin: 0;
+}
+
+input[type='text'],
+input[type='password'],
+textarea,
+select,
+button {
+	border-radius: 0;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+i {
+	color: var(--gray-color-900);
+}
+
+hr {
+	background: rgba(0, 0, 0, 0.15);
+	height: 1px;
+	border: 0;
+	margin: 1.5rem 0 2rem 0;
+}
+
+/* 반응형 */
+@media all and (max-width: 768px) {
+	html {
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 1400px) {
+}
+
+@media (max-width: 1200px) {
+}
+
+@media (max-width: 992px) {
+}
+
+@media (max-width: 768px) {
+	body {
+		&.open {
+			overflow: hidden;
+			position: fixed;
+		}
+	}
+}
+
+@media (max-width: 576px) {
+}
