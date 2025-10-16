@@ -1,20 +1,40 @@
 import './assets/less/main.less';
 
-import { createApp } from 'vue';
+import { createApp, ref } from 'vue';
 import App from './App.vue';
 import router from './router';
-// import { Skapi } from 'skapi-js';
+import { Skapi } from 'skapi-js';
+import { user } from './assets/ts/user';
 
 const app = createApp(App);
 
-// const skapi = new Skapi(
-//     'ap21wxnmwYZ0je7aiifn',
-//     '62f7c0be-31f5-45a7-8e6c-dd0bf99c874e',
-//     { autoLogin: true },
-//     { hostDomain: 'skapi.app', target_cdn: 'd1wrj5ymxrt2ir' }
-// ); // 개발환경 alsdk9879+test1 계정 > test_GW 서비스
+export let loaded = ref(false);
 
-app.use(router);
-app.mount('#app');
+const skapi = new Skapi('ap22zm71ydorjy2moun2', 'e9de5107-4f07-4541-901d-eab5cda49a56', {
+	autoLogin: window.localStorage.getItem('remember') === 'true',
+	eventListener: {
+		onLogin: (profile: any) => {
+			for (let key in user) {
+				delete user[key];
+			}
 
-// export { skapi };
+			if (profile) {
+				Object.assign(user, profile);
+				console.log('User profile:', profile);
+			} else {
+				console.log('No user is logged in.');
+			}
+
+			if (!loaded.value) {
+				app.use(router);
+				app.mount('#app');
+			}
+
+			loaded.value = true;
+		}
+	}
+});
+
+skapi.version();
+
+export { skapi };
