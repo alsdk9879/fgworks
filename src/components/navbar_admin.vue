@@ -36,8 +36,7 @@ const menuList = reactive([
                 isOpen: false,
                 children: [
                     { name: '회사정보', to: '', type: 'link' },
-                    { name: '관리자 권한', to: '', type: 'link' },
-                    { name: '관리자 활동내역', to: '', type: 'link' },
+                    { name: '관리자 권한', to: '', type: 'link' }
                 ]
             },
             {
@@ -47,8 +46,8 @@ const menuList = reactive([
                 children: [
                     { name: '조직 및 구성원 추가', to: '', type: 'link' },
                     { name: '구성원 정보 항목 관리', to: '', type: 'link' },
-                    { name: '직책 관리', to: '', type: 'link' },
-                    { name: '구성원 사용 로그', to: '', type: 'link' }
+                    { name: '직책 설정', to: '', type: 'link' },
+                    { name: '상태', to: '', type: 'link' }
                 ]
             }
         ]
@@ -62,6 +61,7 @@ const menuList = reactive([
                 isOpen: false,
                 children: [
                     { name: '게시판 관리', to: '', type: 'link' },
+                    { name: '게시글 현황', to: '', type: 'link' }
                 ]
             },
             {
@@ -75,7 +75,7 @@ const menuList = reactive([
 
                     { name: '설정', type: 'divider' },
                     { name: '근무 방식 관리', to: '', type: 'link' },
-                    { name: '연차 및 휴일 관리', to: '', type: 'link' }
+                    { name: '연차 및 휴일 기준', to: '', type: 'link' }
                 ]
             },
             {
@@ -90,17 +90,6 @@ const menuList = reactive([
             }
         ]
     },
-    {
-        group: '',
-        items: [
-            {
-                name: '구매 및 청구',
-                icon: '🛠️',
-                isOpen: false,
-                children: [{ name: '관리자 계정 관리', to: '', type: 'link' }]
-            }
-        ]
-    }
 ]);
 
 // 메뉴 토글
