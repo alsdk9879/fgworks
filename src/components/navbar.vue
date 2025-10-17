@@ -27,188 +27,186 @@ const route = useRoute();
 
 // 메뉴 데이터
 const menuList = reactive([
-    {
-        group: '공통 관리',
-        items: [
-            {
-                name: '기본환경',
-                icon: '📄',
-                isOpen: false,
-                children: [
-                    { name: '회사정보', to: '', type: 'link' },
-                    { name: '관리자 권한', to: '', type: 'link' },
-                    { name: '관리자 활동내역', to: '', type: 'link' },
-                ]
-            },
-            {
-                name: '조직/구성원',
-                icon: '👥',
-                isOpen: false,
-                children: [
-                    { name: '조직 및 구성원 추가', to: '', type: 'link' },
-                    { name: '구성원 정보 항목 관리', to: '', type: 'link' },
-                    { name: '직책 관리', to: '', type: 'link' },
-                    { name: '구성원 사용 로그', to: '', type: 'link' }
-                ]
-            }
-        ]
-    },
-    {
-        group: '기능 관리',
-        items: [
-            {
-                name: '게시판',
-                icon: '📝',
-                isOpen: false,
-                children: [
-                    { name: '게시판 관리', to: '', type: 'link' },
-                ]
-            },
-            {
-                name: '근태',
-                icon: '⏰',
-                isOpen: false,
-                children: [
-                    { name: '현황', type: 'divider' },
-                    { name: '근로 현황', to: '', type: 'link' },
-                    { name: '부재 현황 (휴가 및 경조)', to: '', type: 'link' },
+	{
+		group: '공통 관리',
+		items: [
+			{
+				name: '기본환경',
+				icon: '📄',
+				isOpen: false,
+				children: [
+					{ name: '회사정보', to: '', type: 'link' },
+					{ name: '관리자 권한', to: '', type: 'link' },
+					{ name: '관리자 활동내역', to: '', type: 'link' }
+				]
+			},
+			{
+				name: '조직/구성원',
+				icon: '👥',
+				isOpen: false,
+				children: [
+					{ name: '조직 및 구성원 추가', to: '', type: 'link' },
+					{ name: '구성원 정보 항목 관리', to: '', type: 'link' },
+					{ name: '직책 관리', to: '', type: 'link' },
+					{ name: '구성원 사용 로그', to: '', type: 'link' }
+				]
+			}
+		]
+	},
+	{
+		group: '기능 관리',
+		items: [
+			{
+				name: '게시판',
+				icon: '📝',
+				isOpen: false,
+				children: [{ name: '게시판 관리', to: '', type: 'link' }]
+			},
+			{
+				name: '근태',
+				icon: '⏰',
+				isOpen: false,
+				children: [
+					{ name: '현황', type: 'divider' },
+					{ name: '근로 현황', to: '', type: 'link' },
+					{ name: '부재 현황 (휴가 및 경조)', to: '', type: 'link' },
 
-                    { name: '설정', type: 'divider' },
-                    { name: '근무 방식 관리', to: '', type: 'link' },
-                    { name: '연차 및 휴일 관리', to: '', type: 'link' }
-                ]
-            },
-            {
-                name: '결재',
-                icon: '✍️',
-                isOpen: false,
-                children: [
-                    { name: '결재 문서 관리', to: '', type: 'link' },
-                    { name: '서식 관리', to: '', type: 'link' },
-                    { name: '문서 번호 관리', to: '', type: 'link' }
-                ]
-            }
-        ]
-    },
-    {
-        group: '',
-        items: [
-            {
-                name: '구매 및 청구',
-                icon: '🛠️',
-                isOpen: false,
-                children: [{ name: '관리자 계정 관리', to: '', type: 'link' }]
-            }
-        ]
-    }
+					{ name: '설정', type: 'divider' },
+					{ name: '근무 방식 관리', to: '', type: 'link' },
+					{ name: '연차 및 휴일 관리', to: '', type: 'link' }
+				]
+			},
+			{
+				name: '결재',
+				icon: '✍️',
+				isOpen: false,
+				children: [
+					{ name: '결재 문서 관리', to: '', type: 'link' },
+					{ name: '서식 관리', to: '', type: 'link' },
+					{ name: '문서 번호 관리', to: '', type: 'link' }
+				]
+			}
+		]
+	},
+	{
+		group: '',
+		items: [
+			{
+				name: '구매 및 청구',
+				icon: '🛠️',
+				isOpen: false,
+				children: [{ name: '관리자 계정 관리', to: '', type: 'link' }]
+			}
+		]
+	}
 ]);
 
 // 메뉴 토글
 const toggleMenu = (groupIndex, itemIndex) => {
-    if (menuList[groupIndex] && menuList[groupIndex].items[itemIndex]) {
-        const targetItem = menuList[groupIndex].items[itemIndex];
-        const isCurrentlyOpen = targetItem.isOpen;
+	if (menuList[groupIndex] && menuList[groupIndex].items[itemIndex]) {
+		const targetItem = menuList[groupIndex].items[itemIndex];
+		const isCurrentlyOpen = targetItem.isOpen;
 
-        // 모든 메뉴를 먼저 닫기
-        menuList.forEach((group) => {
-            group.items.forEach((item) => {
-                item.isOpen = false;
-            });
-        });
+		// 모든 메뉴를 먼저 닫기
+		menuList.forEach((group) => {
+			group.items.forEach((item) => {
+				item.isOpen = false;
+			});
+		});
 
-        // 클릭한 메뉴가 닫혀있었다면 열기 (이미 열려있었다면 닫힌 상태 유지)
-        if (!isCurrentlyOpen) {
-            targetItem.isOpen = true;
-        }
-    }
+		// 클릭한 메뉴가 닫혀있었다면 열기 (이미 열려있었다면 닫힌 상태 유지)
+		if (!isCurrentlyOpen) {
+			targetItem.isOpen = true;
+		}
+	}
 };
 </script>
 
 <style scoped lang="less">
 #navbar {
-    position: fixed;
-    top: var(--header-height);
-    left: 0;
-    width: var(--navbar-width);
-    height: calc(100vh - var(--header-height));
-    background-color: #f5f5f5;
-    border-right: 1px solid #ddd;
-    overflow-y: auto;
-    z-index: 999;
+	position: fixed;
+	top: var(--header-height);
+	left: 0;
+	width: var(--navbar-width);
+	height: calc(100vh - var(--header-height));
+	background-color: var(--white-color);
+	border-right: 1px solid #ddd;
+	overflow-y: auto;
+	z-index: 999;
 }
 
 .navbar-wrap {
-    height: 100%;
+	height: 100%;
 }
 
 .menu-group {
-    margin-bottom: 1.5rem;
-    padding: 0 0.5rem 1.5rem;
-    border-bottom: 1px solid #ddd;
+	margin-bottom: 1.5rem;
+	padding: 0 0.5rem 1.5rem;
+	border-bottom: 1px solid #ddd;
 
-    &:first-of-type {
-        margin-top: 1.5rem;
-    }
+	&:first-of-type {
+		margin-top: 1.5rem;
+	}
 }
 
 .menu-title {
-    font-size: var(--font-size-xs);
-    color: #999;
-    margin: 0.75rem 0;
+	font-size: var(--font-size-xs);
+	color: #999;
+	margin: 0.75rem 0;
 }
 
 .menu-item {
-    margin-bottom: 4px;
+	margin-bottom: 4px;
 }
 
 .menu-toggle {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    font-size: var(--font-size-md);
-    background: none;
-    border: none;
-    cursor: pointer;
-    justify-content: space-between;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	font-size: var(--font-size-md);
+	background: none;
+	border: none;
+	cursor: pointer;
+	justify-content: space-between;
 
-    &:hover {
-        background: #eee;
-        border-radius: var(--border-radius-md);
-    }
+	&:hover {
+		background: #eee;
+		border-radius: var(--border-radius-md);
+	}
 
-    .text-wrap {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
+	.text-wrap {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
 }
 
 .depth-menu {
-    list-style: none;
-    padding-left: 1.625rem;
-    padding-right: 1rem;
-    display: none;
+	list-style: none;
+	padding-left: 1.625rem;
+	padding-right: 1rem;
+	display: none;
 
-    &.open {
-        display: block;
-    }
+	&.open {
+		display: block;
+	}
 
-    a {
-        display: block;
-        padding: 0.5rem;
-        font-size: var(--font-size-sm);
-        color: var(--gray-color-900);
+	a {
+		display: block;
+		padding: 0.5rem;
+		font-size: var(--font-size-sm);
+		color: var(--gray-color-900);
 
-        &:hover {
-            background: #777;
-            border-radius: var(--border-radius-md);
-            color: #fff;
-        }
-    }
+		&:hover {
+			background: #777;
+			border-radius: var(--border-radius-md);
+			color: #fff;
+		}
+	}
 }
 
 .depth-item {
-    padding: 0.25rem 0;
+	padding: 0.25rem 0;
 }
 </style>

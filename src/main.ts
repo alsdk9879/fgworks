@@ -6,15 +6,18 @@ import router from './router';
 import { Skapi } from 'skapi-js';
 import { user } from './assets/ts/user';
 
+import Button from '@/components/ui/button.vue';
+import Select from '@/components/ui/select.vue';
+
 const app = createApp(App);
 
-export let loaded = ref(false);
+export const loaded = ref(false);
 
 const skapi = new Skapi('ap22zm71ydorjy2moun2', 'e9de5107-4f07-4541-901d-eab5cda49a56', {
 	autoLogin: window.localStorage.getItem('remember') === 'true',
 	eventListener: {
 		onLogin: (profile: any) => {
-			for (let key in user) {
+			for (const key in user) {
 				delete user[key];
 			}
 
@@ -36,5 +39,10 @@ const skapi = new Skapi('ap22zm71ydorjy2moun2', 'e9de5107-4f07-4541-901d-eab5cda
 });
 
 skapi.version();
+
+// app.use(router);
+// app.component('Button', Button);
+// app.component('Select', Select);
+// app.mount('#app');
 
 export { skapi };
