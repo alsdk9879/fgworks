@@ -6,26 +6,20 @@ import AdminMain from '../views/admin/Main.vue';
 import GeneralMain from '../views/general/Main.vue';
 
 let checkUser = async (t, f, n) => {
-	console.log('Checking user authentication for route:', t.name);
-	console.log('Current user state:', user);
-
 	let u = user?.user_id;
 	if (u) {
-		if (t.name === 'login') {
-			// 우선 관리자 페이지 먼저 처리
-			// 나중에 사용자 기획 완료되면 추가 처리
-			n('/admin');
-			return;
-		}
+		console.log('유저 로그인 상태');
 		return n();
 	} else {
-		// support 페이지로 바로 접근 했는데 로그인이 안된 상태라면 로그인 페이지로 보내고, 로그인 후에 support 페이지로 돌아오게 함
+		console.log('유저 로그아웃 상태');
 		if (t.name === 'support') {
+			console.log('support 페이지 접근 -> 로그인 페이지로 이동');
 			n(`/login?support=true`);
 			return;
+		} else {
+			return n();
 		}
 	}
-	n('/login');
 };
 
 const router = createRouter({
@@ -65,13 +59,18 @@ const router = createRouter({
 				{
 					path: '/login',
 					name: 'login',
-					component: () => import('../views/general/Login.vue'),
-					beforeEnter: checkUser
+					component: () => import('../views/general/Login.vue')
 				},
 				{
 					path: '/support',
 					name: 'support',
 					component: () => import('../views/general/support/Home.vue'),
+					beforeEnter: checkUser
+				},
+				{
+					path: '/support/invite',
+					name: 'support-invite',
+					component: () => import('../views/general/support/Invite.vue'),
 					beforeEnter: checkUser
 				}
 			]
